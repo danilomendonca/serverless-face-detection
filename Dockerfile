@@ -1,5 +1,9 @@
 FROM python:2-alpine3.6
 
+# This dockerfile is based on https://github.com/julianbei/alpine-opencv-microimage
+# and https://github.com/daveresbk/docker-thumbor/blob/master/alpine-opencv-microimage/Dockerfile.
+# This dockerfile can build OpenCv with optimisations and adds support for Pillow.
+
 RUN echo -e '@edgunity http://nl.alpinelinux.org/alpine/edge/community\n\
 @edge http://nl.alpinelinux.org/alpine/edge/main\n\
 @testing http://nl.alpinelinux.org/alpine/edge/testing\n\
