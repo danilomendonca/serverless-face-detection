@@ -1,6 +1,6 @@
 {
     "functionName": "guest/prod/faceDetection",
-    "path": "./openwhisk/faceDetection.zip",
+    "path": "/openwhisk/faceDetection.zip",
     "runtime": "python",
     "runtimeVersion": 2.7,
     "dependencies": [
@@ -19,6 +19,5 @@
     ],
     "memory": 256,
     "paramName": "body",
-    "authenticated": false,
-
+    "authenticated": false
 }
