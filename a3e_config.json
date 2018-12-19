@@ -1,0 +1,24 @@
+{
+    "functionName": "guest/prod/faceDetection",
+    "path": "./openwhisk/faceDetection.zip",
+    "runtime": "python",
+    "runtimeVersion": 2.7,
+    "dependencies": [
+      {
+        "lib": "numpy",
+        "version": ">=1.15"
+      },
+      {
+        "lib": "pillow",
+        "version": "==5.3.0"
+      },
+      {
+       "lib": "opencv",
+       "version": ">=3.4.2"
+      }
+    ],
+    "memory": 256,
+    "paramName": "body",
+    "authenticated": false,
+
+}
