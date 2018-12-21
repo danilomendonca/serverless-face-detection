@@ -1,5 +1,5 @@
 {
-    "functionName": "guest/prod/faceDetection",
+    "functionName": "faceDetection",
     "path": "openwhisk/faceDetection.zip",
     "runtime": "python",
     "runtimeVersion": 2.7,
