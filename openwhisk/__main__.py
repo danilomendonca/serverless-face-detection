@@ -1,17 +1,16 @@
-import json
+# import json
 import numpy as np
-from PIL import Image
+# from PIL import Image
 import cv2
 # import time
 import base64
-import io
+# import io
 
 cascade_classifier = cv2.CascadeClassifier("./model/haarcascade_frontalface_alt.xml")
 # print "Done preparing face detection classifier!!"
 
 def main(args):
-    # print(str(args))
-    image = Image.open(io.BytesIO(base64.b64decode(args["image"])))
+    image = cv2.imdecode(np.fromstring(base64.b64decode(args["image"]), dtype=np.uint8),1)
     # image = Image.open("./testImages/armstrong.jpeg")
     height = image.size[1]
 
@@ -39,13 +38,11 @@ def main(args):
     # print "OpenCV Detection and draw time: {} milliseconds".format(millis)
 
     # reconvert image from BGR to RGB
-    result_image = Image.fromarray(cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2RGB))
-    # result_image.show()
+    open_cv_image = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2RGB)
+    # https://docs.opencv.org/3.0-beta/modules/imgcodecs/doc/reading_and_writing_images.html#imencode
+    retval, buffer = cv2.imencode('.png', open_cv_image)
+    return {"statusCode":200,"headers":{"Content-Type":"application/json"},"body":{"image":base64.b64encode(buffer)}}
 
-    # base 64 encode response
-    result_buffer = io.BytesIO()
-    result_image.save(result_buffer, format='PNG')
-    return {"statusCode": 200, "headers": {"Content-Type": "application/json"}, "body": json.dumps({"image": base64.b64encode(result_buffer.getvalue())})}
 
 #if __name__=="__main__":
 #    main({})
