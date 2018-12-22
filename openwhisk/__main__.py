@@ -1,4 +1,4 @@
-# import json
+import json
 import numpy as np
 from PIL import Image
 import cv2
@@ -45,4 +45,4 @@ def main(args):
     result_buffer = io.BytesIO()
     result_image.save(result_buffer, format='PNG')
     encoded_result = base64.b64encode(result_buffer.getvalue())
-    return {"statusCode": 200, "headers": {"Content-Type": "application/json"},"body": {"image": "{}".format(encoded_result)}}
+    return {"statusCode": 200, "headers": {"Content-Type": "application/json"},"body": json.dumps({"image": encoded_result})}
