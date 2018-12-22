@@ -44,5 +44,7 @@ def main(args):
     # base 64 encode response
     result_buffer = io.BytesIO()
     result_image.save(result_buffer, format='PNG')
-    encoded_result = base64.b64encode(result_buffer.getvalue())
-    return {"statusCode": 200, "headers": {"Content-Type": "application/json"},"body": json.dumps({"image": encoded_result})}
+    return {"statusCode": 200, "headers": {"Content-Type": "application/json"}, "body": json.dumps({"image": base64.b64encode(result_buffer.getvalue())})}
+
+#if __name__=="__main__":
+#    main({})
