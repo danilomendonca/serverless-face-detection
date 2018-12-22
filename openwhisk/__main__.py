@@ -11,8 +11,8 @@ cascade_classifier = cv2.CascadeClassifier("./model/haarcascade_frontalface_alt.
 
 def main(args):
     image = cv2.imdecode(np.fromstring(base64.b64decode(args["image"]), dtype=np.uint8),1)
-    # image = Image.open("./testImages/armstrong.jpeg")
-    height = image.size[1]
+    #image = cv2.imread("./testImages/armstrong.jpeg")
+    height = image.shape[:2][0]
 
     # PILLOW works in RGB, openCV in BGR
     open_cv_image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
