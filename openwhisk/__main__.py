@@ -11,7 +11,7 @@ cascade_classifier = cv2.CascadeClassifier("./model/haarcascade_frontalface_alt.
 
 def main(args):
     # print(str(args))
-    image = Image.open(io.BytesIO(base64.b64decode(args["image"]))
+    image = Image.open(io.BytesIO(base64.b64decode(args["image"])))
     # image = Image.open("./testImages/armstrong.jpeg")
     height = image.size[1]
 
