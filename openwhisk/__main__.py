@@ -45,4 +45,4 @@ def main(args):
     result_buffer = io.BytesIO()
     result_image.save(result_buffer, format='PNG')
     encoded_result = base64.b64encode(result_buffer.getvalue())
-    return {"statusCode": 200, "headers": {"Content-Type": "application/json"},"body": {"image": encoded_result}}
+    return {"statusCode": 200, "headers": {"Content-Type": "application/json"},"body": {"image": "{}".format(encoded_result)}}
