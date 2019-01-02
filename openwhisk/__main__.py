@@ -1,13 +1,8 @@
-# import json
 import numpy as np
-# from PIL import Image
 import cv2
-# import time
 import base64
-# import io
 
 cascade_classifier = cv2.CascadeClassifier("./model/haarcascade_frontalface_alt.xml")
-# print "Done preparing face detection classifier!!"
 
 def main(args):
     image = cv2.imdecode(np.fromstring(base64.b64decode(args["image"]), dtype=np.uint8),1)
@@ -33,9 +28,6 @@ def main(args):
     for (x,y,w,h) in faces_rects:
        # image, top left corner and bottom right corner, green in BGR scale, width of rectangle drawn
        cv2.rectangle(open_cv_image, (x,y), (x+w,y+h), (0,255,0), 3)
-
-    # millis = int(round(time.time() * 1000)) - start_millis
-    # print "OpenCV Detection and draw time: {} milliseconds".format(millis)
 
     # reconvert image from BGR to RGB
     open_cv_image = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2RGB)
