@@ -9,7 +9,7 @@ def main(args):
     #image = cv2.imread("./testImages/armstrong.jpeg")
     height = image.shape[:2][0]
 
-    # PILLOW works in RGB, openCV in BGR
+    # Android works in RGB, openCV in BGR
     open_cv_image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
     # obtain a gray scale image
     open_cv_gray_image = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2GRAY)
@@ -32,7 +32,9 @@ def main(args):
     # reconvert image from BGR to RGB
     open_cv_image = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2RGB)
     # https://docs.opencv.org/3.0-beta/modules/imgcodecs/doc/reading_and_writing_images.html#imencode
-    retval, buffer = cv2.imencode('.png', open_cv_image)
+    encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 90]
+    retval, buffer = cv2.imencode('.jpg', open_cv_image, encode_param)
+    # retval, buffer = cv2.imencode('.png', open_cv_image)
     return {"statusCode":200,"headers":{"Content-Type":"application/json"},"body":{"image":base64.b64encode(buffer)}}
 
 
