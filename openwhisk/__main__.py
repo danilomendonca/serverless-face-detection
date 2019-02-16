@@ -32,9 +32,9 @@ def main(args):
     # reconvert image from BGR to RGB
     open_cv_image = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2RGB)
     # https://docs.opencv.org/3.0-beta/modules/imgcodecs/doc/reading_and_writing_images.html#imencode
-    encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 80]
-    retval, buffer = cv2.imencode('.jpg', open_cv_image, encode_param)
-    # retval, buffer = cv2.imencode('.png', open_cv_image)
+    #encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 80]
+    #retval, buffer = cv2.imencode('.jpg', open_cv_image, encode_param)
+    retval, buffer = cv2.imencode('.png', open_cv_image)
     return {"statusCode":200,"headers":{"Content-Type":"application/json"},"body":{"image":base64.b64encode(buffer)}}
 
 
