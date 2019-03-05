@@ -1,6 +1,6 @@
 {
     "functionName": "faceDetection",
-    "path": "openwhisk/faceDetection.zip",
+    "path": "openwhisk/faceDetectionCache.zip",
     "runtime": "python",
     "runtimeVersion": 2.7,
     "dependencies": [
