@@ -3,13 +3,7 @@ import cv2
 import base64
 
 def main(args):
-    global cache
-    if 'cache' not in globals():
-        cascade_classifier = cv2.CascadeClassifier("./model/haarcascade_frontalface_alt.xml")
-        cache = cascade_classifier
-    else:
-        cascade_classifier = cache
-
+    cascade_classifier = cv2.CascadeClassifier("./model/haarcascade_frontalface_alt.xml")
     image = cv2.imdecode(np.fromstring(base64.b64decode(args["image"]), dtype=np.uint8),1)
     open_cv_image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
     open_cv_gray_image = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2GRAY)
@@ -24,10 +18,7 @@ def main(args):
     open_cv_image = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2RGB)
     #retval, buffer = cv2.imencode('.png', open_cv_image)
     retval, buffer = cv2.imencode('.jpg', open_cv_image, [int(cv2.IMWRITE_JPEG_QUALITY), 95])
-    return {"statusCode":200,
-            "headers":{"Content-Type":"application/json"},
-            "body":{"image":base64.b64encode(buffer)},
-            "cache": cache}
+    return {"statusCode":200,"headers":{"Content-Type":"application/json"},"body":{"image":base64.b64encode(buffer)}}
 
 
 #if __name__=="__main__":

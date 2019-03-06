@@ -10,7 +10,6 @@ def main(args):
     else:
         cascade_classifier = cache
 
-    cascade_classifier = cv2.CascadeClassifier("./model/haarcascade_frontalface_alt.xml")
     image = cv2.imdecode(np.fromstring(base64.b64decode(args["image"]), dtype=np.uint8),1)
     open_cv_image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
     open_cv_gray_image = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2GRAY)
