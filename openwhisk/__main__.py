@@ -24,9 +24,12 @@ def main(args):
     open_cv_image = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2RGB)
     #retval, buffer = cv2.imencode('.png', open_cv_image)
     retval, buffer = cv2.imencode('.jpg', open_cv_image, [int(cv2.IMWRITE_JPEG_QUALITY), 95])
-    return {"image":base64.b64encode(buffer),
-            "cache": cache}
 
+    return {"statusCode": 200,
+            "headers": {"Content-Type": "application/json"},
+            "body": {"image":base64.b64encode(buffer)},
+            "cache": cache}
+            
 
 #if __name__=="__main__":
 #    main({})
